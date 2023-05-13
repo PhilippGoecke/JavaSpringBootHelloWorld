@@ -4,7 +4,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt update && apt upgrade -y \
   # install tools
-  && apt install -y --no-install-recommends wget unzip curl \
+  && apt install -y --no-install-recommends unzip curl \
   # install spring dependencies
   && apt install -y --no-install-recommends openjdk-17-jdk gradle \
   # make image smaller
