@@ -17,6 +17,6 @@ WORKDIR /srv/demo
 
 COPY DemoApplication.java ./src/main/java/com/example/demo/DemoApplication.java
 
-EXPOSE 8080
+EXPOSE 8888
 
-CMD [ "./gradlew", "bootRun" ]
+CMD [ "./gradlew", "bootRun", "--args='--server.port=8888'" ]
