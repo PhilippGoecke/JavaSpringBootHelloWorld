@@ -28,6 +28,6 @@ COPY DemoApplication.java ./src/main/java/com/example/demo/DemoApplication.java
 
 EXPOSE 8888
 
-CMD [ "mvn", "spring-boot:run", "-Dspring-boot.run.profiles=dev,local", "-Drun.jvmArguments='-Dserver.port=8888'"]
+CMD [ "mvn", "spring-boot:run", "-Dspring-boot.run.jvmArguments='-Dserver.port=8888'"]
 
 HEALTHCHECK CMD curl -f "http://localhost:8888/hello?name=health&" || exit 1
