@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim as build-env
+FROM debian:bookworm-slim as build-env
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -16,7 +16,7 @@ USER user
 WORKDIR /home/user
 
 # https://github.com/spring-io/initializr
-RUN curl "https://start.spring.io/starter.zip?type=gradle-project&language=java&bootVersion=3.0.6&baseDir=demo&groupId=com.example&artifactId=demo&name=demo&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.demo&packaging=jar&javaVersion=17&dependencies=web" --output springdemo.zip \
+RUN curl "https://start.spring.io/starter.zip?type=gradle-project&language=java&bootVersion=3.1.4&baseDir=demo&groupId=com.example&artifactId=demo&name=demo&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.demo&packaging=jar&javaVersion=17&dependencies=web" --output springdemo.zip \
   && unzip springdemo.zip
 
 WORKDIR /home/user/demo
