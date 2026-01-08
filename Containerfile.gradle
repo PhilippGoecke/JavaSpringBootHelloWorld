@@ -6,7 +6,7 @@ RUN apt update && apt upgrade -y \
   # install tools
   && apt install -y --no-install-recommends unzip curl \
   # install spring dependencies
-  && apt install -y --no-install-recommends openjdk-17-jdk gradle \
+  && apt install -y --no-install-recommends openjdk-21-jdk gradle \
   # make image smaller
   && rm -rf "/var/lib/apt/lists/*" \
   && rm -rf /var/cache/apt/archives
