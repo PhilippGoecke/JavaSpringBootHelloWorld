@@ -24,7 +24,7 @@ RUN gradle --version
 RUN curl "https://start.spring.io/starter.zip?type=gradle-project&language=java&bootVersion=4.0.1&baseDir=demo&groupId=com.example&artifactId=demo&name=demo&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.demo&packaging=jar&javaVersion=17&dependencies=web" --output springdemo.zip \
   && unzip springdemo.zip
 
-WORKDIR /home/user/demo
+WORKDIR "/home/$USER/demo"
 
 COPY DemoApplication.java ./src/main/java/com/example/demo/DemoApplication.java
 
