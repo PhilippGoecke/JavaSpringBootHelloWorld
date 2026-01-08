@@ -11,9 +11,11 @@ RUN apt update && apt upgrade -y \
   && rm -rf "/var/lib/apt/lists/*" \
   && rm -rf /var/cache/apt/archives
 
-RUN adduser user
-USER user
-WORKDIR /home/user
+ARG USER=spring
+RUN useradd --create-home --shell /bin/bash $USER
+ARG HOME="/home/$USER"
+WORKDIR $HOME
+USER $USER
 
 RUN java --version
 RUN mvn --version
