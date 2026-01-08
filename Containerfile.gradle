@@ -1,4 +1,4 @@
-FROM debian:bookworm-slim as build-env
+FROM debian:trixie-slim as build-env
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -19,7 +19,7 @@ RUN java --version
 RUN gradle --version
 
 # https://github.com/spring-io/initializr
-RUN curl "https://start.spring.io/starter.zip?type=gradle-project&language=java&bootVersion=3.4.4&baseDir=demo&groupId=com.example&artifactId=demo&name=demo&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.demo&packaging=jar&javaVersion=17&dependencies=web" --output springdemo.zip \
+RUN curl "https://start.spring.io/starter.zip?type=gradle-project&language=java&bootVersion=4.0.14&baseDir=demo&groupId=com.example&artifactId=demo&name=demo&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.demo&packaging=jar&javaVersion=17&dependencies=web" --output springdemo.zip \
   && unzip springdemo.zip
 
 WORKDIR /home/user/demo
