@@ -13,17 +13,21 @@ public class DemoApplication {
     }
     @GetMapping("/hello")
     public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-      String buildToolVersion = "Unknown";
-      String mavenVersion = DemoApplication.class.getPackage().getImplementationVersion();
-      if (mavenVersion != null) {
-          buildToolVersion = "Maven: " + mavenVersion;
+      String buildTool = "Unknown";
+      // Check if Maven pom.properties exists in classpath
+      if (getClass().getResource("/META-INF/maven/com.example/demo/pom.properties") != null) {
+          buildTool = "Maven";
+      } else if (getClass().getResource("/META-INF/gradle/") != null) {
+          buildTool = "Gradle";
       } else {
-          // This is a rough heuristic, often Gradle versions aren't easily available at runtime 
-          // without specific manifest entries, but we can check for common system properties 
-          // or just default if not found.
-          buildToolVersion = "Gradle (or unpackaged)"; 
+          buildTool = "Unpackaged/IDE";
       }
       
-      return String.format("Hello %s!<br>(Spring Version: %s)<br>(Build Tool Version: %s)", name, SpringApplication.class.getPackage().getImplementationVersion(), buildToolVersion);
+      String springVersion = SpringApplication.class.getPackage().getImplementationVersion();
+      if (springVersion == null) {
+          springVersion = "Unknown";
+      }
+      
+      return String.format("Hello %s!<br>(Spring Version: %s)<br>(Build Tool: %s)", name, springVersion, buildTool);
     }
 }
