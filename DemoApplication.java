@@ -13,6 +13,6 @@ public class DemoApplication {
     }
     @GetMapping("/hello")
     public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-      return String.format("Hello %s!<br>(Spring Version: %s)", name, SpringApplication.class.getPackage().getImplementationVersion());
+      return String.format("Hello %s!<br>(Spring Version: %s)<br>(Java Version: %s)", name, SpringApplication.class.getPackage().getImplementationVersion(), System.getProperty("java.version"));
     }
 }
